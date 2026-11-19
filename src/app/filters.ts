@@ -9,7 +9,7 @@ import { nf } from './util';
   imports: [Ico],
   template: `<div class="head">
     <div>
-      <h1>Indicadores</h1>
+      <h2>Indicadores</h2>
       <p>Gestão de relatórios do Portal PF. Os filtros se ajustam em cascata e todos os gráficos respondem à seleção.</p>
     </div>
     <div class="head-r">

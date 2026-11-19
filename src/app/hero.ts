@@ -22,7 +22,7 @@ import { cap, d1, nf } from './util';
       <div class="h2-b">
         <div><small>Total a concluir</small><strong>{{ nf(v().at) }}</strong><em>{{ nf(v().over) }} acima de 60 dias</em></div>
         <span class="arr" aria-hidden="true">→</span>
-        <div><small>Concluído</small><strong>{{ nf(v().co) }}</strong><em>{{ nf(v().co - v().auto) }} manuais · {{ nf(v().auto) }} automáticos</em></div>
+        <div><small>Concluído</small><strong>{{ nf(v().co) }}</strong><em>{{ nf(v().co - v().auto) }} manuais<br />{{ nf(v().auto) }} automáticos</em></div>
       </div>
     </div>
     <div class="h2-chart">
@@ -30,10 +30,15 @@ import { cap, d1, nf } from './util';
         <span class="c1">Criados · {{ v().n ? '100,0' : '0,0' }}%</span>
         <span class="c2">Concluídos · {{ d1(v().rate) }}%</span>
       </div>
-      <svg viewBox="0 0 320 96" role="img" aria-label="Processos criados e concluídos por mês" preserveAspectRatio="none">
-        <polyline [attr.points]="v().crt" fill="none" stroke="#A1C6ED" stroke-width="1.5" vector-effect="non-scaling-stroke" />
-        <polyline [attr.points]="v().cnc" fill="none" stroke="#FFF3B0" stroke-width="2" vector-effect="non-scaling-stroke" />
-      </svg>
+      <div class="h2-plot">
+        <svg viewBox="0 0 320 96" role="img" aria-label="Processos criados e concluídos por mês" preserveAspectRatio="none">
+          <polyline [attr.points]="v().crt" fill="none" stroke="#A1C6ED" stroke-width="1.5" vector-effect="non-scaling-stroke" />
+          <polyline [attr.points]="v().cnc" fill="none" stroke="#FFF3B0" stroke-width="2" vector-effect="non-scaling-stroke" />
+        </svg>
+        <div class="h2-ax" aria-hidden="true">
+          @for (i of v().idx; track i) { <span>{{ initials[i] }}</span> }
+        </div>
+      </div>
     </div>
   </section>`,
 })
@@ -42,6 +47,7 @@ export class Hero {
   readonly d1 = d1;
   readonly nf = nf;
   readonly months = MONTHS.map((m, i) => ({ v: String(i), t: cap(m) }));
+  readonly initials = MONTHS.map((m) => m.charAt(0).toUpperCase());
   readonly v = computed(() => {
     const rs = this.store.sel(), f = this.store.f(), hm = f.heroM;
     const rh = hm === '' ? rs : rs.filter((r) => r.m === +hm);
@@ -54,6 +60,6 @@ export class Hero {
     const cnc = idx.map((i) => rs.filter((r) => r.m === i && CONC.has(r.st)).length);
     const W = 320, H = 96, all = [...crt, ...cnc], mn = Math.min(...all), mx = Math.max(...all), rg = Math.max(1, mx - mn);
     const line = (a: number[]) => a.map((x, k) => `${((k / Math.max(1, a.length - 1)) * (W - 8) + 4).toFixed(1)},${(H - 8 - ((x - mn) / rg) * (H - 16)).toFixed(1)}`).join(' ');
-    return { rate, at: at.length, co: co.length, auto, over, n: rh.length, crt: line(crt), cnc: line(cnc) };
+    return { rate, at: at.length, co: co.length, auto, over, n: rh.length, idx, crt: line(crt), cnc: line(cnc) };
   });
 }

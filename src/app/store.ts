@@ -8,7 +8,7 @@ export const allSvcNames = (t: string) => (t ? THEMES[t].svc : Object.values(THE
 
 @Injectable({ providedIn: 'root' })
 export class Store {
-  readonly f = signal<Filters>({ tema: '', servico: '', status: '', uf: '', unidade: '', periodo: '12', heroM: '' });
+  readonly f = signal<Filters>({ tema: '', servico: '', status: '', uf: '', unidade: '', periodo: '12', heroM: String(new Date().getMonth()) });
   readonly view = signal<'grafico' | 'tabela'>('grafico');
   readonly evo = signal<'macro' | 'op'>('macro');
   readonly open = signal(false);

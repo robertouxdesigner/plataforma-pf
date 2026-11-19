@@ -6,11 +6,6 @@ import { cap, d1, nf } from './util';
 @Component({
   selector: 'app-hero',
   template: `<section class="hero2" aria-label="Balanço do período">
-    <svg class="h2-shield" viewBox="0 0 240 170" aria-hidden="true" focusable="false">
-      <path d="M0 170V64L120 0L240 64V170Z" fill="rgba(255,255,255,.05)" />
-      <path d="M36 170V86L120 40L204 86V170Z" fill="rgba(0,0,0,.08)" />
-      <path d="M84 170V120L120 92L156 120V170Z" fill="rgba(255,255,255,.07)" />
-    </svg>
     <div class="h2-head">
       <div class="h2-t">
         <h2>Total a concluir<span aria-hidden="true">→</span>concluído</h2>
@@ -21,7 +16,6 @@ import { cap, d1, nf } from './util';
           }
         </select>
       </div>
-      <p>Comparação direta entre a demanda em andamento e os processos finalizados.</p>
     </div>
     <div class="h2-body">
       <div class="h2-rate" [attr.aria-label]="'Taxa de conclusão ' + d1(v().rate) + ' por cento'">{{ d1(v().rate) }}/<span>100%</span></div>

@@ -31,6 +31,7 @@ import { d1, nf, sum } from './util';
         <p class="sub">Média = total de processos ÷ 27 UFs.</p>
       </div>
     </div>
+    <p class="sub" style="margin: var(--s2) 0 0"><b style="color: var(--content)">Status processo</b></p>
     <div class="ufleg"><span><i class="dot"></i>Até a média</span><span><i class="dot m1"></i>Acima da média</span><span><i class="dot m2"></i>Mais de 2× a média</span></div>
   </section>`,
 })

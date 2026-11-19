@@ -7,7 +7,8 @@ import { computeDelta, nf } from './util';
 @Component({
   selector: 'app-kpis',
   imports: [Ico, DeltaView],
-  template: `<div class="grid kpis">
+  template: `<h3 class="kpis-t">Status processos</h3>
+  <div class="grid kpis">
     @for (k of list(); track k.st) {
       <button class="kpi" [class.neg]="k.neg && k.st === 'Indeferido'" (click)="store.toggleF('status', k.st)" [attr.aria-pressed]="store.f().status === k.st">
         <div class="kpi-h"><span class="ico-s"><app-ico n="layers" [s]="18" /></span>{{ k.lb }}</div>

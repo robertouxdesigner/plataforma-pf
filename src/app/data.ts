@@ -32,7 +32,7 @@ export const UNITS: Record<string, string[]> = {};
 UFS.forEach((u) => (UNITS[u] = ['SR/PF/' + u]));
 UNITS['SP'].push('DPF/SOC/SP', 'DPF/STS/SP');
 UNITS['RJ'].push('DPF/CAF/RJ');
-export const GRID: Record<string, [number, number]> = { RR: [0, 3], AP: [0, 4], AM: [1, 2], PA: [1, 3], MA: [1, 4], CE: [1, 5], RN: [1, 6], AC: [2, 1], RO: [2, 2], MT: [2, 3], TO: [2, 4], PI: [2, 5], PB: [2, 6], MS: [3, 2], GO: [3, 3], DF: [3, 4], BA: [3, 5], PE: [3, 6], AL: [3, 7], SP: [4, 3], MG: [4, 4], ES: [4, 5], SE: [4, 6], PR: [5, 3], RJ: [5, 4], SC: [6, 3], RS: [7, 3] };
+export const GRID: Record<string, [number, number]> = { RR: [0, 3], AP: [0, 4], AM: [1, 2], PA: [1, 3], MA: [1, 4], CE: [1, 5], RN: [1, 6], AC: [2, 1], RO: [2, 2], MT: [2, 3], TO: [2, 4], PI: [2, 5], PB: [2, 6], MS: [3, 2], GO: [3, 3], DF: [3, 4], BA: [4, 7], PE: [3, 6], AL: [3, 7], SP: [4, 3], MG: [4, 4], ES: [4, 5], SE: [4, 6], PR: [5, 3], RJ: [5, 4], SC: [6, 3], RS: [7, 3] };
 
 export interface Row {
   t: string; s: string; uf: string; u: string; m: number; dd: number;
